@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="icon" href="/favicon.ico" />
+		<link
+			rel="stylesheet"
+			href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+			integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+			crossorigin=""
+		/>
+		<script
+			src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+			integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+			crossorigin=""
+		></script>
+		<script
+			src="https://kit.fontawesome.com/c27c855421.js"
+			crossorigin="anonymous"
+		></script>
+		<style>
+			@keyframes border {
+				0% {
+					outline-color: rgb(255, 255, 255);
+				}
+
+				100% {
+					outline-color: rgba(255, 255, 255, 0);
+				}
+			}
+
+			.attrbtn {
+				font-size: 1.5rem;
+				transition: 0.3s;
+				cursor: pointer;
+			}
+
+			.attrbtn:hover {
+				transform: scale(1.1);
+			}
+
+			#att {
+				display: none;
+			}
+
+			#att:checked ~ .att-container {
+				visibility: visible;
+				max-width: 500px;
+				max-height: 50px;
+			}
+
+			#att:checked ~ .attrbtn {
+				transform: scaleX(-1);
+			}
+
+			.att-container {
+				transition: 0.3s;
+				visibility: hidden;
+				max-width: 0;
+				max-height: 0;
+				overflow: hidden;
+			}
+
+			.attribution {
+				animation: border 4s infinite alternate;
+				outline: 2px solid rgb(255, 255, 255);
+				overflow: hidden;
+				display: flex;
+				align-items: center;
+				transition: 0.3s;
+				position: fixed;
+				bottom: 0;
+				left: 0;
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.274);
+				border-radius: 10px;
+				padding: 5px;
+				background-color: #14253d;
+				margin: 1rem;
+				font-size: 12px;
+				font-family: sans-serif;
+				text-align: center;
+				letter-spacing: 2px;
+				color: #599fda;
+				z-index: 9999999999;
+			}
+
+			.attribution a {
+				position: relative;
+				display: inline-block;
+				transition: 0.3s;
+				color: #00fff7;
+				text-decoration: none;
+				font-weight: bold;
+			}
+
+			.attribution a::after {
+				transition: 0.3s;
+				content: ' ';
+				width: 0;
+				height: 2px;
+				background-color: rgb(255, 255, 255);
+				position: absolute;
+				inset: 0;
+				top: 17px;
+				left: 50%;
+			}
+
+			.attribution a:hover::after {
+				width: 100%;
+				transform: translateX(-50%);
+			}
+		</style>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>IP Geolocation API</title>
+	</head>
+	<body>
+		<div id="app"></div>
+		<div id="map"></div>
+
+		<script type="module" src="/src/main.js"></script>
+		<div class="attribution">
+			<input type="checkbox" id="att" />
+
+			<div class="att-container">
+				Challenge by
+				<a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+					>Frontend Mentor</a
+				>. Coded by
+				<a href="https://www.frontendmentor.io/profile/KTrick01" target="_blank"
+					>Eduardo Fleitas</a
+				>.
+			</div>
+			<label class="attrbtn" for="att"
+				><i class="fa-solid fa-angles-right"></i
+			></label>
+		</div>
+	</body>
+</html>
